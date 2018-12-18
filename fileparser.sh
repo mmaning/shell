@@ -1,5 +1,5 @@
 #! /bin/bash
-
+# test git push from new laptop top
 # Syntax check
 if [[$# != 1 || $1 == "-h"]]; then
     echo "Usage $0 /etc/password"
