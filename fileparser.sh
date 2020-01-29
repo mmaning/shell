@@ -1,7 +1,7 @@
 #! /bin/bash
 # test git push from new laptop top
 # Syntax check
-if [[$# != 1 || $1 == "-h"]]; then
+if [[ $# != 1 || $1 == "-h" ]]; then
     echo "Usage $0 /etc/password"
     exit 1
 fi
@@ -10,7 +10,7 @@ fi
 file=$1
 
 parse_prompt(){
-    until [[${answer} ==~ yes|no]] ; do
+    until [[ ${answer} =~ yes|no ]] ; do
         echo "Do you wish to parse ${file} (yes|no)?"
         read answer
     done
@@ -28,7 +28,7 @@ parse_prompt
 # Sort file by UID
 # Loop through each line and match desired fields
 
-sort -t ':' -k 3 -n $file | while read -r line ; do 
+sort -t ':' -k 3 -n $file | while read -r line ; do
     # Obtain the user name, UID and homedir
     user=$(echo $line | cut -f '1' -d ':')
     uid=$(echo $line | cut -f '3' -d ':')
@@ -36,9 +36,7 @@ sort -t ':' -k 3 -n $file | while read -r line ; do
     echo "User ${user} has UID ${uid} and home directory ${homedir}"
 
     # use if and regex to print whether UID is at least 3 digit
-    if [[ $uid == [0-9]{3}]] ; then 
-    echo "This user has a UID with at least 3 digital!" ; 
+    if [[ $uid == [0-9]{3} ]] ; then
+    echo "This user has a UID with at least 3 digital!" ;
     fi
 done
-
-
