@@ -10,7 +10,7 @@ fi
 file=$1
 
 parse_prompt(){
-    until [[ ${answer} =~ yes|no ]] ; do
+    until [[ ${answer} =~ yes|no ]] ; do # =~ operator uses regex pattern match
         echo "Do you wish to parse ${file} (yes|no)?"
         read answer
     done
